@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Container} from "reactstrap";
+import Navigation from "./components/navigation/navigation";
+import {Route, Switch} from "react-router";
+import News from "./components/news/news";
+import New from "./components/new/new";
+import addForm from "./components/addForm/addForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Navigation/>
+      <Container>
+          <Switch>
+              <Route path='/' exact component={News}/>
+              <Route path='/news/add' component={addForm}/>
+              <Route path='/news/:id' component={New}/>
+          </Switch>
+      </Container>
     </div>
   );
 }
